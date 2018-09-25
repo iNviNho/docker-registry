@@ -1,0 +1,16 @@
+version: '3'
+
+services:
+  docker-registry:
+    image: registry:2
+    container_name: docker-registry_local
+    ports:
+      - 5000:5000
+    volumes:
+      - ./auth:/auth
+      - ./data:/var/lib/registry
+    environment:
+      - REGISTRY_HTTP_ADDR=0.0.0.0:5000
+      - REGISTRY_AUTH=htpasswd
+      - REGISTRY_AUTH_HTPASSWD_PATH=/auth/htpasswd
+      - REGISTRY_AUTH_HTPASSWD_REALM=Registry Realm

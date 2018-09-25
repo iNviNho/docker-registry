@@ -1,0 +1,19 @@
+version: '3'
+
+services:
+  docker-registry:
+    image: registry:2
+    container_name: docker-registry_production
+    ports:
+      - 5000:5000
+    volumes:
+      - ./data:/var/lib/registry
+      - ./auth:/auth
+      - /etc/letsencrypt/archive/certs:/certs
+    environment:
+      - REGISTRY_HTTP_ADDR=0.0.0.0:5000
+      - REGISTRY_AUTH=htpasswd
+      - REGISTRY_AUTH_HTPASSWD_PATH=/auth/htpasswd
+      - REGISTRY_AUTH_HTPASSWD_REALM=Registry Realm
+      - REGISTRY_HTTP_TLS_CERTIFICATE=/certs/vladino.me.crt
+      - REGISTRY_HTTP_TLS_KEY=/certs/vladino.me.key
