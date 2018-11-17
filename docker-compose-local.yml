@@ -3,7 +3,7 @@ version: '3'
 services:
   docker-registry:
     image: registry:2
-    container_name: docker-registry_local
+    container_name: registry_local
     ports:
       - 5000:5000
     volumes:

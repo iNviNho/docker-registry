@@ -3,7 +3,7 @@ version: '3'
 services:
   docker-registry:
     image: registry:2
-    container_name: docker-registry_production
+    container_name: registry_production
     ports:
       - 5000:5000
     volumes:
@@ -15,5 +15,5 @@ services:
       - REGISTRY_AUTH=htpasswd
       - REGISTRY_AUTH_HTPASSWD_PATH=/auth/htpasswd
       - REGISTRY_AUTH_HTPASSWD_REALM=Registry Realm
-      - REGISTRY_HTTP_TLS_CERTIFICATE=/certs/vladino.me.crt
-      - REGISTRY_HTTP_TLS_KEY=/certs/vladino.me.key
+      - REGISTRY_HTTP_TLS_CERTIFICATE=/certs/registry.vladino.me.crt
+      - REGISTRY_HTTP_TLS_KEY=/certs/registry.vladino.me.key
